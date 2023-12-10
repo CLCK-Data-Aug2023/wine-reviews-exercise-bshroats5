@@ -7,3 +7,5 @@ import zipfile
 with zipfile.ZipFile('data/winemag-data-130k-v2.csv.zip', 'r') as zip_ref:
    df = pd.read_csv(zip_ref.open('winemag-data-130k-v2.csv'))
 
+# Group the data by country & calculate the number of reviews and the average points for each country
+summary = df.groupby('country')['points'].agg(['count', 'mean']).rename(columns={'count': 'reviews', 'mean': 'points'})
