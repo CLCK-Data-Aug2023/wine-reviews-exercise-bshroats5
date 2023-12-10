@@ -9,3 +9,6 @@ with zipfile.ZipFile('data/winemag-data-130k-v2.csv.zip', 'r') as zip_ref:
 
 # Group the data by country & calculate the number of reviews and the average points for each country
 summary = df.groupby('country')['points'].agg(['count', 'mean']).rename(columns={'count': 'reviews', 'mean': 'points'})
+
+# Round the average points to 1 decimal point
+summary['points'] = summary['points'].round(1)
