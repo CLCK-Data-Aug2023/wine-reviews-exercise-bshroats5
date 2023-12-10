@@ -12,3 +12,6 @@ summary = df.groupby('country')['points'].agg(['count', 'mean']).rename(columns=
 
 # Round the average points to 1 decimal point
 summary['points'] = summary['points'].round(1)
+
+# Write the summary data to a new CSV file.
+summary.to_csv('data/reviews-per-country.csv', index=True)
